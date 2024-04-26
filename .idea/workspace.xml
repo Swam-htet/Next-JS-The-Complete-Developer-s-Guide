@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3bbb33da-926e-44b4-b428-b373b697cdc9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/snippets/src/app/db/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snippets/src/app/snippets/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snippets/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodyActiveAccount">
+    <option name="activeAccountId" value="VXNlcjozMzMwNDQ=" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/snippets" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2djcUNbjbI2zIacv4u36nHelOFS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-985749b364ce-JavaScript-WS-233.14475.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3bbb33da-926e-44b4-b428-b373b697cdc9" name="Changes" comment="" />
+      <created>1710524944563</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710524944563</updated>
+      <workItem from="1710524946590" duration="19000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
