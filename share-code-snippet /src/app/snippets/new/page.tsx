@@ -1,28 +1,9 @@
-import { db } from '@/app/db';
+import { createSnippet } from '@/actions';
 import Header from '@/components/share/Header';
-import SnippetCreateForm from '@/components/snippets/SnippetCreateForm';
-import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import React from 'react';
 
 const SnippetCreatePage = () => {
-     async function createSnippet(formValue: FormData) {
-          // server action
-          'use server';
-          // input validations here
-          const title = formValue.get('title') as string;
-          const code = formValue.get('code') as string;
-          // create new snippet
-          const snippet = await db.snippet.create({
-               data: {
-                    title: title,
-                    code: code,
-               },
-          });
-          console.log('This is snippet - ', snippet);
-          // redirect to snippets page
-          redirect('/snippets');
-     }
-
      return (
           <div>
                <Header content="Create New Snippets" />
@@ -51,12 +32,17 @@ const SnippetCreatePage = () => {
                                    id="code"
                               ></textarea>
                          </div>
-                         <button
-                              className="bg-blue-200 hover:bg-blue-300 p-2 rounded"
-                              type="submit"
-                         >
-                              Create Snippet
-                         </button>
+                         <div className="flex gap-3">
+                              <button className="min-w-[200px] text-center hover:bg-gray-300 p-2 rounded">
+                                   <Link href="/">Back</Link>
+                              </button>
+                              <button
+                                   className="bg-blue-200 min-w-[200px] text-center hover:bg-blue-300 p-2 rounded"
+                                   type="submit"
+                              >
+                                   Save
+                              </button>
+                         </div>
                     </form>{' '}
                </div>
           </div>
