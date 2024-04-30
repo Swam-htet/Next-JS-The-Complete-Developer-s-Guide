@@ -10,6 +10,16 @@ interface SnippetDetailProps {
      };
 }
 
+export async function generateStaticParams() {
+     const snippets = await db.snippet.findMany();
+
+     return snippets.map((snippet) => ({
+          params: {
+               id: String(snippet.id),
+          },
+     }));
+}
+
 export default async function SnippetDetailPage(props: SnippetDetailProps) {
      const snippet = await db.snippet.findFirst({
           where: {

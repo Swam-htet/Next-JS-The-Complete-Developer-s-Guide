@@ -58,8 +58,9 @@ export async function editSnippet(id: number, code: string) {
             code: code,
         },
     });
+    revalidatePath(`/snippets/${id}`);
     // redirect to snippets page
-    redirect('/');
+    redirect(`/snippets/${id}`);
 }
 
 export async function deleteSnippet(id: number) {
