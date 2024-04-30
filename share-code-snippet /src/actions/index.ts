@@ -1,21 +1,48 @@
 'use server';
 
 import { db } from '@/app/db';
-import { Snippet } from '@prisma/client';
-import exp from 'constants';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export async function createSnippet(formValue: FormData) {
+export async function createSnippet(formState: { message: string }, formValue: FormData) {
+    try {
     // input validations here
-    const title = formValue.get('title') as string;
-    const code = formValue.get('code') as string;
-    // create new snippet
-    const snippet = await db.snippet.create({
-        data: {
-            title: title,
-            code: code,
-        },
-    });
+        const title = formValue.get('title');
+        const code = formValue.get('code');
+
+        if (typeof title !== 'string' || title.length === 0) {
+            return {
+                message: 'Title is required',
+            };
+        }
+
+        if (typeof code !== 'string' || code.length === 0) {
+            return {
+                message: 'Code is required',
+            };
+        }
+
+        // create new snippet
+        const snippet = await db.snippet.create({
+            data: {
+                title: title,
+                code: code,
+            },
+        });
+    }
+    catch (error: unknown) {
+        if (error instanceof Error) {
+            return {
+                message: error.message
+            }
+        }
+        else {
+            return {
+                message: 'Something went wrong'
+            }
+        }
+    }
+    revalidatePath('/');
     // redirect to snippets page
     redirect('/');
 }
@@ -42,6 +69,7 @@ export async function deleteSnippet(id: number) {
             id: id,
         },
     });
+    revalidatePath('/');
     // redirect to snippets page
     redirect('/');
 }

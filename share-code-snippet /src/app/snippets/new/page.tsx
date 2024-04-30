@@ -1,14 +1,25 @@
-import { createSnippet } from '@/actions';
+'use client';
+
+import * as actions from '@/actions';
 import Header from '@/components/share/Header';
 import Link from 'next/link';
 import React from 'react';
+import { useFormState } from 'react-dom';
 
 const SnippetCreatePage = () => {
+     const [formState, action] = useFormState(actions.createSnippet, {
+          message: '',
+     });
      return (
           <div>
                <Header content="Create New Snippets" />
                <div className="container">
-                    <form action={createSnippet}>
+                    {formState.message && (
+                         <div className="text-red-500 my-2 w-full p-2 border-2 border-red-400 rounded-lg">
+                              {formState.message}
+                         </div>
+                    )}
+                    <form action={action} className="flex flex-col gap-3">
                          <div className="flex gap-5">
                               <label className="w-12" htmlFor="title">
                                    Title
@@ -21,7 +32,7 @@ const SnippetCreatePage = () => {
                                    id="title"
                               />
                          </div>
-                         <div>
+                         <div className="flex gap-5">
                               <label className="w-12" htmlFor="code">
                                    Code
                               </label>

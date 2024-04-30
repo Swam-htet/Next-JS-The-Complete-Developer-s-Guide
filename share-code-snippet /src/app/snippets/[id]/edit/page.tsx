@@ -3,7 +3,6 @@ import { db } from '@/app/db';
 import { notFound, redirect } from 'next/navigation';
 import Header from '@/components/share/Header';
 import SnippetEditForm from '@/components/snippets/SnippetEditForm';
-import { Snippet } from '@prisma/client';
 import { editSnippet } from '@/actions';
 
 interface SnippetEditPageProps {

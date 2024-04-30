@@ -1,5 +1,6 @@
 import { db } from '@/app/db';
 import Link from 'next/link';
+
 export default async function Home() {
      const snippets = await db.snippet.findMany();
      console.log('This is snippets - ', snippets);
@@ -14,6 +15,9 @@ export default async function Home() {
                          Create Snippet
                     </Link>
                </div>
+               {snippets.length === 0 && (
+                    <div className="text-center">No snippets found</div>
+               )}
                {snippets.map((snippet) => (
                     <div className="border mb-2 rounded-3 p-4" key={snippet.id}>
                          <div className="flex justify-between items-center">
