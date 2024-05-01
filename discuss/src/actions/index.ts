@@ -1,11 +1,5 @@
-'use server';
-
-import * as auth from "@/auth";
-
-export async function SignIn() {
-    return auth.signIn();
-}
-
-export async function SignOut() {
-    return auth.signOut();
-}
+export { signIn } from './sign-in';
+export { signOut } from './sign-out';
+export { createTopic } from './create-topic';
+export { createPost } from './create-post';
+export { createComment } from './create-comment';
