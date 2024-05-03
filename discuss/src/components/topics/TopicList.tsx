@@ -9,7 +9,7 @@ export default async function TopicList() {
           <div className="flex flex-row gap-3">
                {topics.map((topic) => (
                     <div key={topic.id}>
-                         <Chip color="primary" variant="dot">
+                         <Chip color="primary" variant="faded">
                               <Link href={path.topicShow(topic.slug)}>
                                    {topic.slug}
                               </Link>

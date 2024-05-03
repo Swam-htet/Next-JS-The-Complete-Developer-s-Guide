@@ -19,12 +19,20 @@ interface CreatePostFormState {
      };
 }
 
-export default function PostCreateForm() {
+interface PostCreateFormProps {
+     slug: string;
+}
+
+export default function PostCreateForm({ slug }: PostCreateFormProps) {
      const initialState: CreatePostFormState = {
           errors: {},
      };
 
-     const [formState, action] = useFormState(actions.createPost, initialState);
+     const [formState, action] = useFormState(
+          actions.createPost.bind(null, slug),
+          initialState
+     );
+
      return (
           <div className="flex gap-2">
                <Popover placement="bottom-start">
@@ -33,7 +41,7 @@ export default function PostCreateForm() {
                     </PopoverTrigger>
                     <PopoverContent>
                          <form action={action}>
-                              <div className="flex flex-col gap-4 p-4">
+                              <div className="flex flex-col gap-4 p-4 w-80">
                                    <h2 className="text-xl font-light">
                                         Create a Post
                                    </h2>

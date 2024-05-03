@@ -1,10 +1,12 @@
-import { error } from 'console';
 'use server';
+
 import { z } from 'zod';
 import { db } from '@/db';
 import { auth } from '@/auth';
 import { Post } from '@prisma/client';
-
+import { revalidatePath } from 'next/cache';
+import path from '@/helpers/path';
+import { redirect } from 'next/navigation';
 
 // create post validation schema
 const createPostSchema = z.object({
@@ -18,12 +20,16 @@ interface CreatePostFormState {
           content?: string[];
           _form?: string[];
      };
-};
+}
 
-export async function createPost(formState: CreatePostFormState, formData: FormData): Promise<CreatePostFormState> {
+export async function createPost(
+     slug: string,
+     formState: CreatePostFormState,
+     formData: FormData
+): Promise<CreatePostFormState> {
      const session = await auth();
 
-     // title and content from the form data 
+     // title and content from the form data
      const title = formData.get('title') as string;
      const content = formData.get('content') as string;
 
@@ -36,25 +42,51 @@ export async function createPost(formState: CreatePostFormState, formData: FormD
 
      // auth check
      if (!session || !session.user) {
-          return { errors: { _form: ['You must be logged in to create a post'] } };
+          return {
+               errors: { _form: ['You must be logged in to create a post'] },
+          };
      }
 
-     // let post: Post;
-     // // create the post
-     // try {
-     //      post = await db.post.create({
-     //           data: {
-     //                title,
-     //                content,
-     //           }
-     //      });
-     
-     // } catch (error) {
+     // check the topicId
+     const topic = await db.topic.findFirst({
+          where: {
+               slug,
+          },
+     });
+     if (!topic) {
+          return {
+               errors: {
+                    _form: ['Cannot find topic'],
+               },
+          };
+     }
 
-     // }
-
-     return { errors: {} };
-
+     let post: Post;
+     try {
+          post = await db.post.create({
+               data: {
+                    title: title,
+                    content: content,
+                    topicId: topic.id,
+                    userId: session.user.id,
+               },
+          });
+     } catch (error) {
+          if (error instanceof Error) {
+               return {
+                    errors: {
+                         _form: ['Failed to create post'],
+                    },
+               };
+          } else {
+               return {
+                    errors: {
+                         _form: ['Something went wrong'],
+                    },
+               };
+          }
+     }
      // todo : revalidate the topic show page after creating a post
-
+     revalidatePath(path.topicShow(slug));
+     redirect(path.postShow(slug, post.id));
 }
