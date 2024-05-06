@@ -1,15 +1,19 @@
 import { db } from '@/db';
 import path from '@/helpers/path';
 import { Chip } from '@nextui-org/react';
+import { Topic } from '@prisma/client';
 import Link from 'next/link';
 
-export default async function TopicList() {
-     const topics = await db.topic.findMany();
+interface TopicListProps {
+     fetchData: () => Promise<Topic[]>;
+}
+export default async function TopicList({ fetchData }: TopicListProps) {
+     const topics = await fetchData();
      return (
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row flex-wrap gap-3 w-full">
                {topics.map((topic) => (
                     <div key={topic.id}>
-                         <Chip color="primary" variant="faded">
+                         <Chip color="primary" variant="dot">
                               <Link href={path.topicShow(topic.slug)}>
                                    {topic.slug}
                               </Link>
