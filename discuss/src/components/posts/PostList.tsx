@@ -20,7 +20,14 @@ export default async function PostList({ fetchData }: PostListProps) {
           return (
                <div key={post.id} className="border rounded p-2">
                     <Link href={path.postShow(topicSlug, post.id)}>
-                         <h3 className="text-lg font-bold">{post.title}</h3>
+                         <div className="flex justify-between">
+                              <h3 className="text-lg font-bold">
+                                   {post.title}
+                              </h3>
+                              {/* <p className="text-xs text-gray-400">
+                                   {post.createdAt}
+                              </p> */}
+                         </div>
                          <div className="flex flex-row gap-8">
                               <p className="text-xs text-gray-400">
                                    By {post.user.name}

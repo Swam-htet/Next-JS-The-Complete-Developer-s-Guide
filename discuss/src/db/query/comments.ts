@@ -1,5 +1,6 @@
 import { Comment } from '@prisma/client';
 import { db } from '..';
+import { cache } from 'react';
 
 export type CommentWithUser = Comment & {
      user: {
@@ -8,7 +9,7 @@ export type CommentWithUser = Comment & {
      };
 };
 
-export async function fetchCommentByPostId(
+export const fetchCommentByPostId = cache(async function (
      postId: string
 ): Promise<CommentWithUser[]> {
      console.log('DB Query Called!');
@@ -18,4 +19,4 @@ export async function fetchCommentByPostId(
           include: { user: { select: { image: true, name: true } } },
           orderBy: { createdAt: 'asc' },
      });
-}
+});

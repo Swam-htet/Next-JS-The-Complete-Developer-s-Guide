@@ -1,13 +1,11 @@
-import { db } from '@/db';
+import { fetchPostById } from '@/db/query/posts';
 
 interface PostShowProps {
      postId: string;
 }
 
 export default async function PostShow({ postId }: PostShowProps) {
-     const post = await db.post.findUnique({
-          where: { id: postId },
-     });
+     const post = await fetchPostById(postId);
      return (
           <div className="m-4">
                <h1 className="text-2xl font-bold my-2">{post?.title}</h1>
