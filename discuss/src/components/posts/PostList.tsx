@@ -1,6 +1,5 @@
 import { PostWithData } from '@/db/query/posts';
 import path from '@/helpers/path';
-import type { Post, User, Topic } from '@prisma/client';
 import Link from 'next/link';
 
 interface PostListProps {
