@@ -10,7 +10,8 @@ export type PostWithData = Post & {
 export async function fetchPostsByTopicSlug(
      slug: string
 ): Promise<PostWithData[]> {
-     // await new Promise((resolve) => setTimeout(resolve, 2000));
+     // fake loading time 2s
+     await new Promise((resolve) => setTimeout(resolve, 2000));
      return db.post.findMany({
           where: { topic: { slug } },
           include: {
@@ -30,6 +31,8 @@ export async function fetchPostById(postId: string): Promise<Post | null> {
 }
 
 export async function fetchTopPosts(): Promise<PostWithData[]> {
+     // fake loading time 2s
+     await new Promise((resolve) => setTimeout(resolve, 2000));
      return db.post.findMany({
           take: 5,
           orderBy: [
@@ -40,6 +43,26 @@ export async function fetchTopPosts(): Promise<PostWithData[]> {
                },
           ],
 
+          include: {
+               topic: { select: { slug: true } },
+               user: { select: { name: true } },
+               _count: { select: { comments: true } },
+          },
+     });
+}
+
+export async function fetchTopPostsBySearchTerm(
+     term: string
+): Promise<PostWithData[]> {
+     // fake loading time 2s
+     await new Promise((resolve) => setTimeout(resolve, 2000));
+     return db.post.findMany({
+          where: {
+               OR: [
+                    { title: { contains: term } },
+                    { content: { contains: term } },
+               ],
+          },
           include: {
                topic: { select: { slug: true } },
                user: { select: { name: true } },

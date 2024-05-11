@@ -12,8 +12,7 @@ export type CommentWithUser = Comment & {
 export const fetchCommentByPostId = cache(async function (
      postId: string
 ): Promise<CommentWithUser[]> {
-     console.log('DB Query Called!');
-
+     await new Promise((resolve) => setTimeout(resolve, 2000));
      return db.comment.findMany({
           where: { postId },
           include: { user: { select: { image: true, name: true } } },

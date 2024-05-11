@@ -1,5 +1,7 @@
 import CommentShow from '@/components/comments/CommentShow';
-import { CommentWithUser, fetchCommentByPostId } from '@/db/query/comments';
+import { fetchCommentByPostId } from '@/db/query/comments';
+import { Suspense } from 'react';
+import CommentShowLoading from './CommentShowLoading';
 
 interface CommentListProps {
      // fetchData: () => Promise<CommentWithUser[]>;
@@ -14,11 +16,15 @@ export default async function CommentList({ postId }: CommentListProps) {
      );
      const renderedComments = topLevelComments.map((comment) => {
           return (
-               <CommentShow
-                    key={comment.id}
-                    commentId={comment.id}
-                    postId={postId}
-               />
+               <>
+                    <Suspense fallback={<CommentShowLoading />}>
+                         <CommentShow
+                              key={comment.id}
+                              commentId={comment.id}
+                              postId={postId}
+                         />
+                    </Suspense>
+               </>
           );
      });
 

@@ -1,5 +1,6 @@
 import CommentCreateForm from '@/components/comments/CommentCreateForm';
 import CommentList from '@/components/comments/Commentlist';
+import CommentListLoading from '@/components/comments/CommentShowLoading';
 import PostShow from '@/components/posts/PostShow';
 import PostShowLoading from '@/components/posts/PostShowLoading';
 import Link from 'next/link';
